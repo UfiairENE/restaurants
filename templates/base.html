@@ -1,0 +1,84 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Restaurants</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css" integrity="sha512-4wfcoXlib1Aq0mUtsLLM74SZtmB73VHTafZAvxIp/Wk9u1PpIsrfmTvK0+yKetghCL8SHlZbMyEcV8Z21v42UQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" /> -->
+		<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+		{% if request.path == '/vendorDashboard/' %}
+			<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+			<script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+			<script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+			<link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+			<link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+			{% endif %}
+
+		<!-- Jquery datatable cdn for pagination -->	
+		<link href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" rel="stylesheet">
+
+		<!-- swipper js library cdn-->
+		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    	<link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+		<link rel="stylesheet" href={% static 'css/output.css' %} media="all">
+	</head>
+	<body class="dark:bg-darkMain dark:text-darkText">
+		<div class="page-loader">
+			
+		</div>
+		
+		<!--header content-->
+		<!--main content-->
+		{% block content%}
+		{% endblock %}
+		<!--footer content-->
+		
+		<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+		{% block link %}
+		{% endblock link %}
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src={% static 'js/site.js' %}></script>
+		<!-- <script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_API_KEY}}&libraries=places&callback=initAutoComplete" async defer></script> -->
+		<!-- <script>
+			const toggleDark = document.getElementById("toggleTheme")
+			// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+			if (localStorage.theme === 'dark' || (!('theme' in localStorage))) {
+				if (!(document.documentElement.classList.contains("dark"))){
+					document.documentElement.classList.add('dark')
+					toggleDark.select()
+					toggleDark.click()
+				}
+			} else {
+				document.documentElement.classList.remove('dark')
+				if (toggleDark.checked){
+					toggleDark.select()
+					toggleDark.click()
+				}
+				localStorage.theme = 'light'
+			}
+		
+			toggleDark.addEventListener('click', ()=> {
+    if (toggleDark.checked){
+        if (!document.documentElement.classList.contains('dark')){
+            document.documentElement.classList.add('dark');
+			localStorage.theme = 'dark'
+        }
+    }
+    else{
+        if (document.documentElement.classList.contains('dark')){
+            document.documentElement.classList.remove('dark');
+			localStorage.theme = 'light'
+        }
+    }
+})
+		</script> -->
+	</body>
+
+</html>

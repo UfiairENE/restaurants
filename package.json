@@ -1,0 +1,26 @@
+{
+  "name": "restaurants",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwindbuild": "npx tailwindcss -i restaurants/static/css/input.css -o restaurants/static/css/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UfiairENE/restaurants"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UfiairENE/restaurants/issues"
+  },
+  "homepage": "https://github.com/UfiairENE/restaurants#readme",
+  "dependencies": {
+    "axios": "^1.2.1",
+    "flowbite": "^1.5.4",
+    "tailwindcss": "^3.2.4"
+  }
+}
