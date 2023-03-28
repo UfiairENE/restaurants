@@ -16,6 +16,7 @@ from decouple import config
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Development
@@ -103,16 +104,8 @@ WSGI_APPLICATION = 'restaurants.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD' : config('DB_PASSWORD'),
-        'HOST' : config('DB_HOST'),
-    }
-}
+DATABASES = {'default': dj_database_url.parse (config('DATABASE_URL'), conn_max_age=600)}
+
 
 
 # Password validation
@@ -194,7 +187,7 @@ SECUREE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 GOOGLE_API_KEY = config('GOOGLE_API_KEY')
 FORWARD_GEOCODING = config('X_RAPID_API_KEY')
 
-if DEBUG == True:
+if DEBUG == False:
     os.environ['PATH'] = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo') + ';' + os.environ['PATH']
     os.environ['PROJ_LIB'] = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo\data\proj') + ';' + os.environ['PATH']
     GDAL_LIBRARY_PATH = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo\gdal304.dll')
@@ -203,10 +196,10 @@ if DEBUG == True:
 # from sentry_sdk.integrations.django import DjangoIntegration
 
 # sentry_sdk.init(
-#     dsn="https://ce6ee483f27941d4b0926a1fad1cbb65@o4504501906440192.ingest.sentry.io/4504501908602880",
-#     integrations=[
-#         DjangoIntegration(),
-#     ],
+#   dsn="https://ce6ee483f27941d4b0926a1fad1cbb65@o4504501906440192.ingest.sentry.io/4504501908602880",
+#   integrations=[
+#       DjangoIntegration(),
+#      ],
 
 #     # Set traces_sample_rate to 1.0 to capture 100%
 #     # of transactions for performance monitoring.

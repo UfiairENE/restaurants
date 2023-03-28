@@ -120,7 +120,7 @@ def send_verification_email(request, user, mail_subject, email_template):
     mail.send()
 
 def send_notification(email_subject, mail_template, context):
-    from_email = settings.DEFAULT_FROM_EMAIL or "josephibochi2@gmail.com"
+    from_email = settings.DEFAULT_FROM_EMAIL or "irenecufia@gmail.com"
     message = render_to_string(mail_template, context)
     if (isinstance(context['to_email'], str)):
         to_email = []
