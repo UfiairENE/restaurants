@@ -104,9 +104,17 @@ WSGI_APPLICATION = 'restaurants.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.parse (config('DATABASE_URL'), conn_max_age=600)}
-
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         'NAME': config('DB_NAME'),
+#         'USER': config('DB_USER'),
+#         'PASSWORD' : config('DB_PASSWORD'),
+#         'HOST' : config('DB_HOST'),
+#     }
+# }
+DATABASES = {'default': dj_database_url.parse(config('DATABASE_URL'), conn_max_age=600),}
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
